@@ -1,0 +1,8 @@
+##Interface: 80300
+##Title: Auto Resurrect
+##Author: BrianMiltonJR https://github.com/BrianMiltonJr
+##Version: 1.4.1
+##Notes: Auto Resurrect Version: 1.4.1 - A simple addon that automatically accepts Resurrection requests. Have fun!
+##X-Email: harlanbmiltonjr@gmail.com
+##X-Repository: https://github.com/BrianMiltonJr/AutoResurrect
+init.lua
