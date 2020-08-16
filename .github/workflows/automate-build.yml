@@ -1,0 +1,24 @@
+name: Automate Build
+
+jobs:
+  prepare:
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/checkout@v2.3.2
+      with:
+        ref: release
+  process:
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/process.yml
+      with:
+        version: '0.1.0'
+        tag: '-b'
+    - uses: "marvinpinto/action-automatic-releases@latest"
+      with:
+        repo_token: "${{ secrets.GITHUB_TOKEN }}"
+        prerelease: false
+        files: |
+          $FILENAME
+
+
