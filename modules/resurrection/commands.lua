@@ -20,11 +20,14 @@ Commands = {
         NS.funcs.FlipToggle("CombatResurrect", command);
     end,
 
-    ["print"] = function(self, ...)
-        for k,v in pairs(...) do
-            NS.funcs.Debug(k);
-            for k1,v1 in pairs(v) do
-                NS.funcs.Debug(k1, v1);
+    ["print"] = function(...)
+        local command = ...;
+        for i,v in ipairs(command) do
+            NS.funcs.Debug(v);
+            local obj = NS[v];
+            
+            for k1,v1 in pairs(obj) do
+                NS.funcs.Debug("  "..k1..": "..v1.."");
             end
         end
     end,
@@ -43,5 +46,9 @@ SlashCmdList["AUTORESURRECT"] = function(txt)
         table.insert(args, split[i]);
     end
 
-    Commands[Command](args);
+    if Commands[Command] ~= null then
+        Commands[Command](args);
+    else
+        print(txt.." is not a valid command, please try again");
+    end
 end
