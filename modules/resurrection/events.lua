@@ -1,18 +1,10 @@
 --addon AutoResurrect: modules/resurrection/events
-
 local addonName, NS = ...;
 
 Events = {
-    -- Allows us to keep track of what Chat we are joining
-    ["CHAT_MSG_CHANNEL_NOTICE"] = function(self, ...) 
-      local text, playerName, languageName, channelName, playerName2, zoneChannelID, channelIndex, channelBaseName = ...;
-      print(text, channelBaseName, channelName);
-      if text == "YOU_CHANGED" then Messages.Chat = channelBaseName; end
-    end,
-  
     -- Fires whenever we die
     ["PLAYER_DEAD"] = function(self, ...) 
-      SendMessage(Messages.Dead, Messages.Channel, Messages.Language);
+      NS.funcs.SendMessage(NS.Messages.Dead, nil, NS.Messages.Language);
     end,
     
     -- Fires whenever we are in range of our corpse
@@ -22,51 +14,46 @@ Events = {
   
     -- Fires when you run back to corpse
     ["PLAYER_UNGHOST"] = function(self, ...) 
-      SendMessage(Messages.Dead, Messages.Unghost, Messages.Language);
+      NS.funcs.SendMessage(NS.Messages.Unghost, nil, NS.Messages.Language);
     end,
   
     -- Fires when you receive a summon
     ["CONFIRM_SUMMON"] = function(self, ...) 
-      SendMessage(Messages.Dead, Messages.Thanks.Summon, Messages.Language);
+      NS.funcs.SendMessage(NS.Messages.Thanks.Summon, nil, NS.Messages.Language);
       ConfirmSummon();
     end,
   
     -- Fires when being Resurrected
     ["RESURRECT_REQUEST"] = function(self, ...) 
       local sender = ...;
-      if (Toggles.CombatStatus and Toggles.CombatResurrect) or not Toggles.CombatStatus then
-        SendMessage(Messages.Thanks.Resurrect, 'WHISPER', Messages.Language, sender);
+      if (NS.Toggles.CombatStatus and NS.Toggles.CombatResurrect) or not NS.Toggles.CombatStatus then
+        NS.funcs.SendMessage(NS.Messages.Thanks.Resurrect, 'WHISPER', NS.Messages.Language, sender);
         AcceptResurrect();
       end
     end,
   
     -- Fires when Entering Combat
     ["PLAYER_REGEN_DISABLED"] = function(self, ...) 
-        
-      Toggles.CombatStatus = true;
-      
+      NS.Toggles.CombatStatus = true;
     end,
-    
-  
+
     -- Fires when Leaving Combat
     ["PLAYER_REGEN_ENABLED"] = function(self, ...) 
-        
-      Toggles.CombatStatus = false;
-      
+      NS.Toggles.CombatStatus = false;
     end,
-    
+
 }
 
 --Registers all of our Events to our Frame
 for k,v in pairs(Events) do
-    AutoResurrect:RegisterEvent(k);
+    NS.Frame:RegisterEvent(k);
 end
   
 --Runs our event handler is we are enabled else we print we are disabled
-AutoResurrect:SetScript("OnEvent", function(self, event, ...)
-    if Events[event] ~= nil and Toggles.Enabled then
+NS.Frame:SetScript("OnEvent", function(self, event, ...)
+    if Events[event] ~= nil and NS.Toggles.Enabled then
         Events[event](...);
     else
-        print(Messages.Disabled);
+        print(NS.Messages..Combat.Disabled);
     end
 end)
