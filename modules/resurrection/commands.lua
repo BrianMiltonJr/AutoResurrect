@@ -2,21 +2,15 @@
 
 Commands = {
     --Enables and Disables the addon from executing
-    ["status"] = function(self, ...)
+    ["toggle"] = function(self, ...)
         local command = ...;
-        NS.funcs.FlipToggle("Enabled", command);
+        NS.funcs.FlipToggle(command[1], command[2]);
     end,
 
     --Enables and Disables messages addon posts to chat
-    ["messages"] = function(self, ...)
+    ["message"] = function(self, ...)
         local command = ...;
-        NS.funcs.FlipToggle("Messages", command);
-    end,
-
-    --Enables and Disables accepting resurrects during combat
-    ["combat"] = function(self, ...)
-        local command = ...;
-        NS.funcs.FlipToggle("CombatResurrect", command);
+        NS.funcs.SetMessage(command);
     end,
 
     --Used to print in memory vars to console
