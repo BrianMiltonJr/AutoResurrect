@@ -2,16 +2,9 @@
 local addonName, NS = ...;
 
 Events = {
-    -- Allows us to keep track of what Chat we are joining
-    ["CHAT_MSG_CHANNEL_NOTICE"] = function(self, ...) 
-      local text, playerName, languageName, channelName, playerName2, zoneChannelID, channelIndex, channelBaseName = ...;
-      print(text, channelBaseName, channelName);
-      if text == "YOU_CHANGED" then NS.Messages.Chat = channelBaseName; end
-    end,
-  
     -- Fires whenever we die
     ["PLAYER_DEAD"] = function(self, ...) 
-      NS.funcs.SendMessage(NS.Messages.Dead, NS.Messages.Channel, NS.Messages.Language);
+      NS.funcs.SendMessage(NS.Messages.Dead, nil, NS.Messages.Language);
     end,
     
     -- Fires whenever we are in range of our corpse
@@ -21,12 +14,12 @@ Events = {
   
     -- Fires when you run back to corpse
     ["PLAYER_UNGHOST"] = function(self, ...) 
-      NS.funcs.SendMessage(NS.Messages.Dead, NS.Messages.Unghost, NS.Messages.Language);
+      NS.funcs.SendMessage(NS.Messages.Unghost, nil, NS.Messages.Language);
     end,
   
     -- Fires when you receive a summon
     ["CONFIRM_SUMMON"] = function(self, ...) 
-      NS.funcs.SendMessage(NS.Messages.Dead, NS.Messages.Thanks.Summon, NS.Messages.Language);
+      NS.funcs.SendMessage(NS.Messages.Thanks.Summon, nil, NS.Messages.Language);
       ConfirmSummon();
     end,
   
@@ -61,6 +54,6 @@ NS.Frame:SetScript("OnEvent", function(self, event, ...)
     if Events[event] ~= nil and NS.Toggles.Enabled then
         Events[event](...);
     else
-        print(NS.Messages.Disabled);
+        print(NS.Messages..Combat.Disabled);
     end
 end)
