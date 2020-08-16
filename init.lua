@@ -9,11 +9,15 @@ NS.Messages = {
     ["Resurrect"] = "Thank you for Resurrecting me.",
     ["Summon"] = "Thank you for Summoning me."
   },
+  ["Combat"] = {
+    ["Enabled"] = "Combat Resurrections are enabled. Use the /ar combat off command to enable Combat Resurrections."
+    ["Disabled"] = "Combat Resurrections are disabled. Use the /ar combat on command to enable Combat Resurrections.",
+  },
   ["Unghost"] = "Walked back to my body.",
   ["Dead"] = "I died, please Resurrect me at your earliest convenience.",
-  ["Disabled"] = "Combat Resurrections have been disabled. Use the /ar cr_on command to enable Combat Resurrections.",
+  
   ["Language"] = GetDefaultLanguage("player"),
-  ["Channel"] = nil
+  ["FavoredChat"] = "instance",
 };
 
 --Whether certain features are enabled of disabled
