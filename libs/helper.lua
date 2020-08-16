@@ -39,6 +39,11 @@ NS.funcs = {
         if NS.Toggles.Messages then SendChatMessage(msg, channel, language, target); end
     end,
 
+    ["SetMessage"] = function(...)
+        local key, value = ...;
+        NS.Messages[key] = value;
+    end,
+
     -- Sets our toggle to false or true if status == "off" or "on". If Status == null then we flip the toggle.
     ["FlipToggle"] = function(key, status)
         if NS.Toggles[key] == nil then return nil; end
