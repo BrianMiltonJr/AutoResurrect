@@ -20,16 +20,23 @@ Commands = {
         NS.funcs.FlipToggle("CombatResurrect", command);
     end,
 
+    --Used to print in memory vars to console
     ["print"] = function(...)
         local command = ...;
         for i,v in ipairs(command) do
-            NS.funcs.Debug(v);
             local obj = NS[v];
-            
+            if obj == nil then NS.funcs.Debug("The property "..v.." does not exists"); return nil; end
+
+            NS.funcs.Debug(v);
             for k1,v1 in pairs(obj) do
                 NS.funcs.Debug("  "..k1..": "..v1.."");
             end
         end
+    end,
+
+    --Personal Test Command
+    ["test"] = function()
+        --NS.funcs.GetChatChannel();
     end,
 }
 
