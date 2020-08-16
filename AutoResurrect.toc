@@ -6,3 +6,9 @@
 ##X-Email: harlanbmiltonjr@gmail.com
 ##X-Repository: https://github.com/BrianMiltonJr/AutoResurrect
 init.lua
+
+libs\array.lua
+libs\helper.lua
+
+modules\resurrection\events.lua
+modules\resurrection\commands.lua
