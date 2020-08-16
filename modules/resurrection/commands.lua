@@ -1,5 +1,4 @@
 --addon AutoResurrect: modules/resurrection/commands
-local addonName, NS = ...;
 
 Commands = {
     --Enables and Disables the addon from executing
@@ -29,7 +28,7 @@ Commands = {
 
             NS.funcs.Debug(v);
             for k1,v1 in pairs(obj) do
-                NS.funcs.Debug("  "..k1..": "..v1.."");
+                NS.funcs.Debug("  "..k1..": "..NS.funcs.ToString(v1).."");
             end
         end
     end,
