@@ -6,15 +6,15 @@ NS.Frame = CreateFrame("Frame");
 --The messages our addon spits out
 NS.Messages = {
 	["Thanks"] = {
-		["Resurrect"] = "Thank you for Resurrecting me.",
-		["Summon"] = "Thank you for Summoning me."
+		["Resurrect"] = "Thank you for resurrecting me.",
+		["Summon"] = "Thank you for summoning me."
 	},
 	["Combat"] = {
-		["Enabled"] = "Combat Resurrections are enabled. Use the /ar combat off command to enable Combat Resurrections.",
-		["Disabled"] = "Combat Resurrections are disabled. Use the /ar combat on command to enable Combat Resurrections.",
+		["Enabled"] = "Combat resurrections are enabled. Use the /ar combat off command to enable Combat Resurrections.",
+		["Disabled"] = "Combat resurrections are disabled. Use the /ar combat on command to enable Combat Resurrections.",
 	},
-	["Unghost"] = "Walked back to my body.",
-	["Dead"] = "I died, please Resurrect me at your earliest convenience.",
+	["Unghost"] = "I walked back to my body.",
+	["Dead"] = "I died, please resurrect me at your earliest convenience.",
 	
 	["Language"] = GetDefaultLanguage("player"),
 	["FavoredChat"] = "instance",
