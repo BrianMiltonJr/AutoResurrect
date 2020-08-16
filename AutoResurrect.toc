@@ -1,10 +1,11 @@
 ##Interface: 80300
 ##Title: Auto Resurrect
-##Author: BrianMiltonJR https://github.com/BrianMiltonJr
-##Version: 1.4.1
-##Notes: Auto Resurrect Version: 1.4.1 - A simple addon that automatically accepts Resurrection requests. Have fun!
-##X-Email: harlanbmiltonjr@gmail.com
+##Author: BrianMiltonJR
+##Version: 0.1.0
+##Notes: Auto Resurrect Version: 0.1.0 - Automatically Accepts summons and resurrections. As well as alert your comrades when such events befall you.
 ##X-Repository: https://github.com/BrianMiltonJr/AutoResurrect
+##SavedVariablesPerCharacter: NS.Messages, NS.Toggles 
+
 init.lua
 libs\helper.lua
 #libs\array.lua
