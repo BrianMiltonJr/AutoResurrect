@@ -1,0 +1,18 @@
+name: 'Process Addon'
+description: 'Processes our repo into a .zip we need for when we package for release'
+inputs:
+  version:
+    description: 'The Version we are releasing'
+    required: true
+  tag:
+    desciption: 'Our version tag'
+    required: true
+runs:
+  using: "composite"
+  steps:
+    - run: zip -r $FILE_NAME $GITHUB_WORKSPACE/AutoResurrection -x .github/* actions/*
+      shell: bash
+      env:
+        FILE_NAME: ${{inputs.version}}${{inputs.tag}}.zip
+
+      
